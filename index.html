@@ -1,1 +1,62 @@
-Panda Express!
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project Front End</title>
+    <script language="javascript" type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script language="javascript" type="text/javascript"
+        src="https://raw.githubusercontent.com/ethereum/web3.js/1.x/dist/web3.min.js"></script>
+</head>
+
+<body>
+    <div id="display">
+        <text>
+            hii
+        </text>
+    </div>
+    <!-- <script>
+        $("#display").empty();
+        $("#display").append(`<text>yoyoo</text>`);
+    </script> -->
+
+    <script>
+        var userAccount;
+
+        function startApp() {
+            var accountInterval = setInterval(function () {
+                if (web3.eth.accounts[0] !== userAccount) {
+                    userAccount = web3.eth.accounts[0];
+                }
+                displayAddress(userAddress);
+                
+            }, 100);
+        }
+        function displayAddress(address) {
+            $("#display").empty();
+            $("#display").append(`<text>yoyo</text>`);
+        }
+        window.addEventListener('load', function () {
+
+            // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+            if (typeof web3 !== 'undefined') {
+                // Use Mist/MetaMask's provider
+                web3js = new Web3(web3.currentProvider);
+            } else {
+                $("#display").empty();
+                $("#display").append(`<text>yoyooo</text>`);
+                // Handle the case where the user doesn't have Metamask installed
+                // Probably show them a message prompting them to install Metamask
+            }
+
+            // Now you can start your app & access web3 freely:
+            startApp()
+
+        })
+
+    </script>
+</body>
+
+</html>
